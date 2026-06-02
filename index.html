@@ -46,6 +46,15 @@
         .product-card:hover .product-image {
             transform: scale(1.05);
         }
+
+        /* Sembunyikan scrollbar untuk filter kategori di mobile */
+        .scrollbar-hide {
+            -ms-overflow-style: none;  /* IE & Edge */
+            scrollbar-width: none;     /* Firefox */
+        }
+        .scrollbar-hide::-webkit-scrollbar {
+            display: none;             /* Chrome, Safari, Opera */
+        }
     </style>
 </head>
 
@@ -56,7 +65,7 @@
          Logo teks elegan di kiri, navigasi di kanan.
          Sticky agar tetap terlihat saat scroll.
     ============================================= -->
-    <nav class="sticky top-0 z-50 bg-off-white/90 backdrop-blur-md border-b border-charcoal/5">
+    <nav class="sticky top-0 z-50 bg-[#FBF9F6]/80 backdrop-blur-md shadow-sm shadow-charcoal/[0.03] transition-shadow duration-300">
         <div class="max-w-7xl mx-auto px-6 lg:px-8">
             <div class="flex items-center justify-between h-20">
                 <!-- Logo -->
@@ -137,9 +146,30 @@
     <section id="koleksi" class="bg-white py-24 md:py-32">
         <div class="max-w-7xl mx-auto px-6 lg:px-8">
             <!-- Section Header -->
-            <div class="text-center mb-16">
+            <div class="text-center mb-12">
                 <p class="text-dusty-rose text-sm font-medium tracking-widest uppercase mb-3">Our Collection</p>
                 <h2 class="font-serif text-3xl md:text-4xl lg:text-5xl font-medium">Koleksi Buket Kami</h2>
+            </div>
+
+            <!-- Filter Kategori: Pill buttons, horizontal scroll di mobile -->
+            <div class="mb-12 overflow-x-auto scrollbar-hide -mx-6 px-6 lg:mx-0 lg:px-0">
+                <div class="flex gap-3 whitespace-nowrap justify-start lg:justify-center">
+                    <button class="filter-btn active bg-dusty-rose text-white px-5 py-2.5 rounded-full text-sm font-medium transition-all duration-300 hover:shadow-md hover:shadow-dusty-rose/20 flex-shrink-0" data-filter="semua">
+                        Semua
+                    </button>
+                    <button class="filter-btn border border-charcoal/15 text-charcoal px-5 py-2.5 rounded-full text-sm font-medium transition-all duration-300 hover:border-dusty-rose hover:text-dusty-rose flex-shrink-0" data-filter="wisuda">
+                        Buket Wisuda
+                    </button>
+                    <button class="filter-btn border border-charcoal/15 text-charcoal px-5 py-2.5 rounded-full text-sm font-medium transition-all duration-300 hover:border-dusty-rose hover:text-dusty-rose flex-shrink-0" data-filter="anniversary">
+                        Anniversary
+                    </button>
+                    <button class="filter-btn border border-charcoal/15 text-charcoal px-5 py-2.5 rounded-full text-sm font-medium transition-all duration-300 hover:border-dusty-rose hover:text-dusty-rose flex-shrink-0" data-filter="meja">
+                        Bunga Meja
+                    </button>
+                    <button class="filter-btn border border-charcoal/15 text-charcoal px-5 py-2.5 rounded-full text-sm font-medium transition-all duration-300 hover:border-dusty-rose hover:text-dusty-rose flex-shrink-0" data-filter="dukacita">
+                        Duka Cita
+                    </button>
+                </div>
             </div>
 
             <!-- Product Grid: 1 kolom (mobile), 2 kolom (tablet), 3 kolom (desktop) -->
@@ -147,7 +177,11 @@
 
                 <!-- Produk 1 -->
                 <div class="product-card group">
-                    <div class="aspect-[3/4] bg-gradient-to-br from-pink-50 to-rose-50 rounded-2xl overflow-hidden mb-5 border border-charcoal/5">
+                    <div class="relative aspect-[3/4] bg-gradient-to-br from-pink-50 to-rose-50 rounded-2xl overflow-hidden mb-5 border border-charcoal/5">
+                        <!-- Badge: Stok Segar (hijau pastel) -->
+                        <span class="absolute top-3 left-3 z-10 bg-emerald-50 text-emerald-700 text-[11px] font-medium px-3 py-1 rounded-full border border-emerald-100">
+                            Stok Segar
+                        </span>
                         <div class="product-image w-full h-full flex items-center justify-center">
                             <div class="text-center">
                                 <svg class="w-12 h-12 mx-auto text-dusty-rose/30 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -169,7 +203,11 @@
 
                 <!-- Produk 2 -->
                 <div class="product-card group">
-                    <div class="aspect-[3/4] bg-gradient-to-br from-amber-50 to-orange-50 rounded-2xl overflow-hidden mb-5 border border-charcoal/5">
+                    <div class="relative aspect-[3/4] bg-gradient-to-br from-amber-50 to-orange-50 rounded-2xl overflow-hidden mb-5 border border-charcoal/5">
+                        <!-- Badge: Sisa Stok (terracotta/soft-red) -->
+                        <span class="absolute top-3 left-3 z-10 bg-red-50 text-red-700 text-[11px] font-medium px-3 py-1 rounded-full border border-red-100">
+                            Sisa 2 Buket
+                        </span>
                         <div class="product-image w-full h-full flex items-center justify-center">
                             <div class="text-center">
                                 <svg class="w-12 h-12 mx-auto text-dusty-rose/30 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -333,6 +371,177 @@
     </section>
 
     <!-- ============================================
+         TESTIMONI (SOCIAL PROOF)
+         Grid 3 kolom (desktop), 1 kolom (mobile).
+         Setiap kartu berisi rating bintang emas,
+         foto profil placeholder, nama, dan ulasan.
+    ============================================= -->
+    <section id="testimoni" class="bg-white py-24 md:py-32">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <!-- Section Header -->
+            <div class="text-center mb-16">
+                <p class="text-dusty-rose text-sm font-medium tracking-widest uppercase mb-3">Testimoni</p>
+                <h2 class="font-serif text-3xl md:text-4xl lg:text-5xl font-medium">Apa Kata Mereka</h2>
+            </div>
+
+            <!-- Testimoni Grid: 1 kolom (mobile), 3 kolom (desktop) -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+
+                <!-- Testimoni 1 -->
+                <div class="bg-off-white rounded-2xl p-8 border border-charcoal/5 hover:shadow-lg hover:shadow-dusty-rose/5 transition-shadow duration-500">
+                    <!-- Rating Bintang -->
+                    <div class="flex gap-1 mb-5">
+                        <svg class="w-5 h-5 text-[#D4A373]" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                        <svg class="w-5 h-5 text-[#D4A373]" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                        <svg class="w-5 h-5 text-[#D4A373]" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                        <svg class="w-5 h-5 text-[#D4A373]" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                        <svg class="w-5 h-5 text-[#D4A373]" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                    </div>
+                    <!-- Teks Ulasan -->
+                    <p class="text-charcoal/70 font-light leading-relaxed text-sm mb-6">
+                        "Buket Rose Blush-nya cantik banget! Ibu saya sampai terharu saat menerimanya di hari ulang tahunnya. Pengemasan rapi, bunga segar, dan pengirimannya tepat waktu. Terima kasih Bloom & Co.!"
+                    </p>
+                    <!-- Profil Pelanggan -->
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full bg-gradient-to-br from-dusty-rose/30 to-dusty-rose/10 flex items-center justify-center flex-shrink-0">
+                            <span class="text-dusty-rose text-xs font-medium">AR</span>
+                        </div>
+                        <div>
+                            <p class="text-sm font-medium">Anisa Rahma</p>
+                            <p class="text-charcoal/40 text-xs font-light">Pelanggan sejak 2022</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimoni 2 -->
+                <div class="bg-off-white rounded-2xl p-8 border border-charcoal/5 hover:shadow-lg hover:shadow-dusty-rose/5 transition-shadow duration-500">
+                    <!-- Rating Bintang -->
+                    <div class="flex gap-1 mb-5">
+                        <svg class="w-5 h-5 text-[#D4A373]" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                        <svg class="w-5 h-5 text-[#D4A373]" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                        <svg class="w-5 h-5 text-[#D4A373]" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                        <svg class="w-5 h-5 text-[#D4A373]" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                        <svg class="w-5 h-5 text-[#D4A373]" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                    </div>
+                    <!-- Teks Ulasan -->
+                    <p class="text-charcoal/70 font-light leading-relaxed text-sm mb-6">
+                        "Saya pesan buket untuk anniversary dan hasilnya melebihi ekspektasi! Istri saya langsung tersenyum lebar melihatnya. Warna bunganya pas, harumnya lembut. Pasti akan pesan lagi."
+                    </p>
+                    <!-- Profil Pelanggan -->
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full bg-gradient-to-br from-dusty-rose/30 to-dusty-rose/10 flex items-center justify-center flex-shrink-0">
+                            <span class="text-dusty-rose text-xs font-medium">DP</span>
+                        </div>
+                        <div>
+                            <p class="text-sm font-medium">Dimas Pratama</p>
+                            <p class="text-charcoal/40 text-xs font-light">Pelanggan sejak 2023</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimoni 3 -->
+                <div class="bg-off-white rounded-2xl p-8 border border-charcoal/5 hover:shadow-lg hover:shadow-dusty-rose/5 transition-shadow duration-500">
+                    <!-- Rating Bintang -->
+                    <div class="flex gap-1 mb-5">
+                        <svg class="w-5 h-5 text-[#D4A373]" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                        <svg class="w-5 h-5 text-[#D4A373]" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                        <svg class="w-5 h-5 text-[#D4A373]" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                        <svg class="w-5 h-5 text-[#D4A373]" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                        <svg class="w-5 h-5 text-[#D4A373]" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                    </div>
+                    <!-- Teks Ulasan -->
+                    <p class="text-charcoal/70 font-light leading-relaxed text-sm mb-6">
+                        "Setiap kali ada momen spesial, Bloom & Co. selalu jadi pilihan pertama saya. Bunga-bunganya selalu fresh dan rangkaiannya artistik. Pelayanannya ramah dan cepat tanggap. Love it!"
+                    </p>
+                    <!-- Profil Pelanggan -->
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full bg-gradient-to-br from-dusty-rose/30 to-dusty-rose/10 flex items-center justify-center flex-shrink-0">
+                            <span class="text-dusty-rose text-xs font-medium">SW</span>
+                        </div>
+                        <div>
+                            <p class="text-sm font-medium">Sarah Wijaya</p>
+                            <p class="text-charcoal/40 text-xs font-light">Pelanggan sejak 2021</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         FAQ (ACCORDION)
+         Sistem akordeon minimalis dengan transisi halus.
+         3 pertanyaan umum seputar toko bunga.
+         Menggunakan vanilla JS untuk toggle.
+    ============================================= -->
+    <section id="faq" class="bg-off-white py-24 md:py-32">
+        <div class="max-w-3xl mx-auto px-6 lg:px-8">
+            <!-- Section Header -->
+            <div class="text-center mb-16">
+                <p class="text-dusty-rose text-sm font-medium tracking-widest uppercase mb-3">FAQ</p>
+                <h2 class="font-serif text-3xl md:text-4xl lg:text-5xl font-medium">Pertanyaan Umum</h2>
+            </div>
+
+            <!-- Accordion Container -->
+            <div class="space-y-4">
+
+                <!-- FAQ Item 1 -->
+                <div class="faq-item border border-charcoal/8 rounded-2xl overflow-hidden bg-white">
+                    <button onclick="toggleFaq(this)" class="w-full flex items-center justify-between px-7 py-6 text-left group" aria-expanded="false">
+                        <span class="font-medium text-sm md:text-base pr-4">Apakah bisa kirim di hari yang sama?</span>
+                        <svg class="faq-icon w-5 h-5 text-dusty-rose flex-shrink-0 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v12m6-6H6"/>
+                        </svg>
+                    </button>
+                    <div class="faq-answer max-h-0 overflow-hidden transition-all duration-500 ease-in-out">
+                        <div class="px-7 pb-6 pt-0">
+                            <p class="text-charcoal/60 text-sm font-light leading-relaxed">
+                                Ya, kami menyediakan layanan <strong class="font-medium text-charcoal/80">same-day delivery</strong> untuk pemesanan yang masuk sebelum pukul 14.00 WIB. Pengiriman dilakukan ke area Jakarta, Depok, Tangerang, dan Bekasi. Untuk wilayah di luar area tersebut, silakan hubungi kami untuk konfirmasi ketersediaan.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 2 -->
+                <div class="faq-item border border-charcoal/8 rounded-2xl overflow-hidden bg-white">
+                    <button onclick="toggleFaq(this)" class="w-full flex items-center justify-between px-7 py-6 text-left group" aria-expanded="false">
+                        <span class="font-medium text-sm md:text-base pr-4">Berapa lama bunga segarnya bertahan?</span>
+                        <svg class="faq-icon w-5 h-5 text-dusty-rose flex-shrink-0 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v12m6-6H6"/>
+                        </svg>
+                    </button>
+                    <div class="faq-answer max-h-0 overflow-hidden transition-all duration-500 ease-in-out">
+                        <div class="px-7 pb-6 pt-0">
+                            <p class="text-charcoal/60 text-sm font-light leading-relaxed">
+                                Bunga segar kami umumnya bertahan <strong class="font-medium text-charcoal/80">5–7 hari</strong> dengan perawatan yang tepat. Tips agar lebih awet: ganti air vas setiap 2 hari, potong batang secara diagonal, jauhkan dari sinar matahari langsung, dan simpan di tempat sejuk. Kami juga menyertakan kartu tips perawatan di setiap pembelian.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 3 -->
+                <div class="faq-item border border-charcoal/8 rounded-2xl overflow-hidden bg-white">
+                    <button onclick="toggleFaq(this)" class="w-full flex items-center justify-between px-7 py-6 text-left group" aria-expanded="false">
+                        <span class="font-medium text-sm md:text-base pr-4">Apakah bisa kustom kartu ucapan?</span>
+                        <svg class="faq-icon w-5 h-5 text-dusty-rose flex-shrink-0 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v12m6-6H6"/>
+                        </svg>
+                    </button>
+                    <div class="faq-answer max-h-0 overflow-hidden transition-all duration-500 ease-in-out">
+                        <div class="px-7 pb-6 pt-0">
+                            <p class="text-charcoal/60 text-sm font-light leading-relaxed">
+                                Tentu! Setiap pesanan buket bisa disertai <strong class="font-medium text-charcoal/80">kartu ucapan gratis</strong> dengan pesan personal dari Anda. Cukup tuliskan pesan yang diinginkan saat memesan via WhatsApp. Kami juga menyediakan opsi kartu premium dengan desain eksklusif (tersedia pilihan letterpress dan kaligrafi) dengan biaya tambahan.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
          FOOTER
          Kontak, jam buka, dan link media sosial.
     ============================================= -->
@@ -448,6 +657,51 @@
                 mobileMenu.classList.add('hidden');
             });
         });
+
+        // Filter kategori — toggle active state
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Hapus state active dari semua tombol
+                document.querySelectorAll('.filter-btn').forEach(b => {
+                    b.classList.remove('active', 'bg-dusty-rose', 'text-white');
+                    b.classList.add('border', 'border-charcoal/15', 'text-charcoal');
+                });
+                // Tambah state active ke tombol yang diklik
+                btn.classList.add('active', 'bg-dusty-rose', 'text-white');
+                btn.classList.remove('border', 'border-charcoal/15', 'text-charcoal');
+            });
+        });
+
+        // FAQ Accordion toggle
+        function toggleFaq(button) {
+            const faqItem = button.parentElement;
+            const answer = faqItem.querySelector('.faq-answer');
+            const icon = button.querySelector('.faq-icon');
+            const isOpen = button.getAttribute('aria-expanded') === 'true';
+
+            // Tutup semua FAQ lain (behavior accordion — hanya 1 terbuka)
+            document.querySelectorAll('.faq-item').forEach(item => {
+                if (item !== faqItem) {
+                    const otherAnswer = item.querySelector('.faq-answer');
+                    const otherIcon = item.querySelector('.faq-icon');
+                    const otherBtn = item.querySelector('button');
+                    otherAnswer.style.maxHeight = null;
+                    otherIcon.style.transform = 'rotate(0deg)';
+                    otherBtn.setAttribute('aria-expanded', 'false');
+                }
+            });
+
+            // Toggle FAQ yang diklik
+            if (isOpen) {
+                answer.style.maxHeight = null;
+                icon.style.transform = 'rotate(0deg)';
+                button.setAttribute('aria-expanded', 'false');
+            } else {
+                answer.style.maxHeight = answer.scrollHeight + 'px';
+                icon.style.transform = 'rotate(45deg)';
+                button.setAttribute('aria-expanded', 'true');
+            }
+        }
     </script>
 
 </body>
